@@ -38,7 +38,7 @@ def read_plot_NIMROD(path, file):
         line_to_read = file_to_read.readline()
         line_cut = line_to_read.split()
         q_file[iline] = float(line_cut[0])
-        dcs_file[iline] = 0.094*float(line_cut[1])  #0.094*
+        dcs_file[iline] = 0.094*float(line_cut[1])  
         err_file[iline] = 0.094*float(line_cut[2])
 
     file_to_read.close()
@@ -78,8 +78,8 @@ def read_plot_SANS2D(path, file):
 
     return nlines -5, q_file, dcs_file, err_file
 
-path_SANS2D = 'C:/Users/za954/Work Folders/Documents/ISIS work/SANS2D/Data Analysis/2023/Dep100K/Heating/Reduced'
-path_NIMROD = 'C:/Users/za954/Work Folders/Documents/ISIS work/SANS2D/Data Analysis/Together/Heating/NIMROD'
+path_SANS2D = '../Reduced'
+path_NIMROD = '../NIMROD'
 
 list_path_SANS2D = listdir(path_SANS2D)
 list_path_NIMROD = listdir(path_NIMROD)
@@ -186,11 +186,11 @@ def merge_NIMROD_SANS2D(temp, syst):
     plt.ylabel('Intensity (cm$^{-1}$))', fontsize=12)
     plt.title('T = {0} K'.format(temp))
     plt.legend(frameon=False)
-    plt.savefig('C:/Users/za954/Work Folders/Documents/ISIS work/SANS2D/Data Analysis/2023/Dep100K/Heating/Merging/cm-1/Plots/NIMROD_SANS2D_Merged_Mixed_Dep100K_{0}K_intensity_witherrors.png'.format(temp, syst), dpi=800)
+    plt.savefig('../Plots/NIMROD_SANS2D_Merged_Mixed_Dep100K_{0}K_intensity_witherrors.png'.format(temp, syst), dpi=800)
     plt.show()
     plt.close()
 
-    file_export_merged_alpha = open('C:/Users/za954/Work Folders/Documents/ISIS work/SANS2D/Data Analysis/2023/Dep100K/Heating/Merging/cm-1/Merged_MINTS/merged_mixed_Dep100K_isoT{0}K_intensity.dat'.format(temp), 'w')
+    file_export_merged_alpha = open('../merged_mixed_Dep100K_isoT{0}K_intensity.dat'.format(temp), 'w')
 
     f_merged_alpha = interp1d(q_tot, dcs_tot)
     f_merged_alpha_err = interp1d(q_tot, err_dcs_tot)
@@ -242,7 +242,7 @@ def merge_NIMROD_SANS2D(temp, syst):
     plt.xlabel('Q ($\AA^{-1}$)')
     plt.ylabel('Intensity (cm$^{-1}$))')
     plt.legend(frameon=False)
-    #plt.savefig('C:/Users/za954/Work Folders/Documents/ISIS work/SANS2D/Data Analysis/2022/Dep40K/Heating/Merging/cm-1/Plots/Background_Merged_Mixed_Dep30K_{0}K_MINT.png'.format(temp), dpi=800)
+    #plt.savefig('../Plots/Background_Merged_Mixed_Dep30K_{0}K_MINT.png'.format(temp), dpi=800)
     plt.show()
     plt.close()
 
@@ -376,13 +376,13 @@ def merge_NIMROD_SANS2D_mixed(temp):
     plt.ylabel('Intensity (cm$^{-1}$)', fontsize=12)
     plt.title('T = {0} K'.format(temp))
     plt.legend(frameon=False)
-    plt.savefig('C:/Users/za954/Work Folders/Documents/ISIS work/SANS2D/Data Analysis/2023/Dep100K/Heating/Merging/cm-1/Plots/NIMROD_SANS2D_Merged_Mixed_Dep100K_{0}K_intensity_witherrors.png'.format(temp), dpi=800)
+    plt.savefig('../Plots/NIMROD_SANS2D_Merged_Mixed_Dep100K_{0}K_intensity_witherrors.png'.format(temp), dpi=800)
     plt.show()
     plt.close()
 
 # export of the Merged data
 
-    file_export_merged_alpha = open('C:/Users/za954/Work Folders/Documents/ISIS work/SANS2D/Data Analysis/2023/Dep100K/Heating/Merging/cm-1/Merged_MINTS/merged_mixed_Dep100K_isoT{0}K_intensity.dat'.format(temp), 'w')
+    file_export_merged_alpha = open('../merged_mixed_Dep100K_isoT{0}K_intensity.dat'.format(temp), 'w')
 
     f_merged_alpha = interp1d(q_tot, dcs_tot)
     f_merged_alpha_err = interp1d(q_tot, err_dcs_tot)
@@ -433,7 +433,7 @@ def merge_NIMROD_SANS2D_mixed(temp):
     plt.xlabel('Q ($\AA^{-1}$)')
     plt.ylabel('Intensity (cm$^{-1}$)')
     plt.legend(frameon=False)
-    #plt.savefig('C:/Users/za954/Work Folders/Documents/ISIS work/SANS2D/Data Analysis/2022/Dep40K/Heating/Merging/barns_sr_atom/Plots/Background_Merged_Mixed_Dep40K_{0}K_intensity.png'.format(temp), dpi=800)
+    #plt.savefig('../Plots/Background_Merged_Mixed_Dep40K_{0}K_intensity.png'.format(temp), dpi=800)
     plt.show()
     plt.close()
 
@@ -443,8 +443,8 @@ background = np.zeros(10)
 err_background = np.zeros(10)
 level_1 = np.zeros(10)
 
-file_background = open('C:/Users/za954/Work Folders/Documents/ISIS work/SANS2D/Data Analysis/2023/Dep100K/Heating/Merging/cm-1/backgrounds_mixed_Dep100K_intensity.out', 'w')
-file_level_1 = open('C:/Users/za954/Work Folders/Documents/ISIS work/SANS2D/Data Analysis/2023/Dep100K/Heating/Merging/cm-1/level_1_mixed_Dep100K_intensity.out', 'w')
+file_background = open('../backgrounds_mixed_Dep100K_intensity.out', 'w')
+file_level_1 = open('../level_1_mixed_Dep100K_intensity.out', 'w')
 
 line = 'TEMP (K)    BACKGROUND (cm$^{-1}$) -- Fitted on the Q range (0.7 - 1.0 A-1)   \n'
 file_background.write(line)
