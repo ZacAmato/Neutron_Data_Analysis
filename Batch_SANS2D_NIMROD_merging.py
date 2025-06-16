@@ -38,7 +38,9 @@ def read_plot_NIMROD(path, file):
         line_to_read = file_to_read.readline()
         line_cut = line_to_read.split()
         q_file[iline] = float(line_cut[0])
-        dcs_file[iline] = 0.094*float(line_cut[1])  
+
+        # translate DCS to I
+        dcs_file[iline] = 0.094*float(line_cut[1])
         err_file[iline] = 0.094*float(line_cut[2])
 
     file_to_read.close()
@@ -78,7 +80,7 @@ def read_plot_SANS2D(path, file):
 
     return nlines -5, q_file, dcs_file, err_file
 
-path_SANS2D = '../Reduced'
+path_SANS2D = '../Sans2d'
 path_NIMROD = '../NIMROD'
 
 list_path_SANS2D = listdir(path_SANS2D)
