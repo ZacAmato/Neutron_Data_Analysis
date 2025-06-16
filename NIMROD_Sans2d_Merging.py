@@ -8,10 +8,7 @@ from matplotlib import cm
 import matplotlib.colorbar as cb
 from scipy.interpolate import interp1d
 
-#Merging procedure
-#2 Merging functions are used : one for T!= 80,90 K because only SANS2D_1 and NIMROD are used
-# the second _mixed for both SANS2D_1 & _2 and NIMROD
-# function _mixed is commented inside
+# SANS merging procedure
 
 def read_plot_NIMROD(path, file):
 
